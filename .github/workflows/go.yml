@@ -27,16 +27,12 @@ jobs:
     - name: Test
       run: go test -v ./...
 
-    - name: Bump and Release
-      uses: rymndhng/release-on-push-action@master
-      with:
-        bump_version_scheme: minor
-
-    - name: GoReleaser Action
-      uses: goreleaser/goreleaser-action@v5.0.0
-      with:
-          version: latest
-          args: release --clean
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  release-on-push:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: rymndhng/release-on-push-action@master
+        with:
+          bump_version_scheme: minor
           
