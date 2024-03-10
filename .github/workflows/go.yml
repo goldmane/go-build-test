@@ -27,12 +27,10 @@ jobs:
     - name: Test
       run: go test -v ./...
 
-  release-on-push:
-    runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: rymndhng/release-on-push-action@master
-        with:
-          bump_version_scheme: minor
+    - name: Tag and Release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: rymndhng/release-on-push-action@master
+      with:
+        bump_version_scheme: minor
           
