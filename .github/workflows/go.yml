@@ -29,8 +29,8 @@ jobs:
 
     - name: Bump and Release
       uses: rymndhng/release-on-push-action@master
-        with:
-          bump_version_scheme: minor
+      with:
+        bump_version_scheme: minor
 
     - name: GoReleaser Action
       uses: goreleaser/goreleaser-action@v5.0.0
